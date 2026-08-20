@@ -2,7 +2,7 @@
 
 A modern, gaming-themed website for the SAVAGE Discord Bot built with React and Vite.
 
-live website : https://savage404e.github.io/SAVAGE-BOT/
+live website : https://savage404e.github.io/SAVAGE-WEBSITE/
 
 ## Features
 
