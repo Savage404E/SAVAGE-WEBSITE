@@ -467,7 +467,7 @@ function App() {
             </div>
             <div style={styles.statCard}>
               <div style={{ fontSize: '32px', margin: '0 auto 12px' }}>👑</div>
-              <div style={styles.statNumber}>17K+</div>
+              <div style={styles.statNumber}>21K+</div>
               <div style={styles.statLabel}>Server Members</div>
             </div>
             <div style={styles.statCard}>
@@ -543,7 +543,7 @@ function App() {
               Join the ultimate gaming experience
             </p>
             <p style={styles.ctaDescription}>
-              Join our massive and famous community of 17k+ members! SAVAGE Bot is the most popular gaming bot with pets, dungeons, economy, and 20+ mini-games. Be part of something legendary.
+              Join our massive and famous community of 21k+ members! SAVAGE Bot is the most popular gaming bot with pets, dungeons, economy, and 20+ mini-games. Be part of something legendary.
             </p>
             <div style={styles.ctaStats}>
               <div style={styles.ctaStat}>
@@ -551,7 +551,7 @@ function App() {
                 <div style={styles.ctaStatLabel}>Badge</div>
               </div>
               <div style={styles.ctaStat}>
-                <div style={styles.ctaStatNumber}>👥 17k+</div>
+                <div style={styles.ctaStatNumber}>👥 21k+</div>
                 <div style={styles.ctaStatLabel}>Members</div>
               </div>
               <div style={styles.ctaStat}>
