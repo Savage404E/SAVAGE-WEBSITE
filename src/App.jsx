@@ -184,7 +184,7 @@ function App() {
     features: {
       padding: isMobile ? '32px 12px' : '80px 24px',
       backgroundColor: 'rgba(10, 10, 15, 0.5)',
-      backgroundImage: 'url(./wall-bg.gif)',
+      backgroundImage: 'url(/wall-bg.gif)',
       backgroundSize: 'contain',
       backgroundPosition: 'center',
       backgroundRepeat: 'repeat',
@@ -320,7 +320,7 @@ function App() {
     ctaCard: {
       border: '1px solid rgba(107, 33, 168, 0.3)',
       backgroundColor: 'linear-gradient(135deg, rgba(10, 10, 15, 0.5) 0%, rgba(107, 33, 168, 0.1) 100%)',
-      backgroundImage: 'url(./door-bg.gif)',
+      backgroundImage: 'url(/door-bg.gif)',
       backgroundSize: 'cover',
       backgroundPosition: 'center top',
       backgroundRepeat: 'no-repeat',
@@ -408,10 +408,10 @@ function App() {
   ];
 
   const gamePictures = [
-    { image: "./card-rng.png", title: "Card RNG", description: "Test your luck with our card-based RNG games. Draw cards, play hands, and win big rewards with strategic gameplay and random outcomes." },
-    { image: "./clan.png", title: "Clan Teams", description: "Join or create powerful clans with your friends. Build your community, compete in clan wars, and earn exclusive rewards together." },
-    { image: "./dungeon.png", title: "Dungeon Fights", description: "Explore dangerous dungeons with your party. Battle monsters, find treasure, and conquer challenging boss fights for epic loot." },
-    { image: "./pets.png", title: "Pet Lovers", description: "Adopt and care for adorable pets. Feed them, play with them, and watch them grow. Level up your pets for special bonuses." },
+    { image: "/card-rng.png", title: "Card RNG", description: "Test your luck with our card-based RNG games. Draw cards, play hands, and win big rewards with strategic gameplay and random outcomes." },
+    { image: "/clan.png", title: "Clan Teams", description: "Join or create powerful clans with your friends. Build your community, compete in clan wars, and earn exclusive rewards together." },
+    { image: "/dungeon.png", title: "Dungeon Fights", description: "Explore dangerous dungeons with your party. Battle monsters, find treasure, and conquer challenging boss fights for epic loot." },
+    { image: "/pets.png", title: "Pet Lovers", description: "Adopt and care for adorable pets. Feed them, play with them, and watch them grow. Level up your pets for special bonuses." },
   ];
 
   return (
