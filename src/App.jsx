@@ -71,7 +71,7 @@ function App() {
       padding: isMobile ? '12px' : '24px',
       textAlign: 'center',
       position: 'relative',
-      backgroundImage: 'url(./hero-bg.gif)',
+      backgroundImage: 'url(/hero-bg.gif)',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
