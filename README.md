@@ -5,7 +5,9 @@ live website : https://savage404e.github.io/SAVAGE-WEBSITE/
 
 ---
 
-<img src=https://raw.githubusercontent.com/Savage404E/SAVAGE-WEBSITE/refs/heads/main/website_view.png/>
+<br>
+<a <img src="https://raw.githubusercontent.com/Savage404E/SAVAGE-WEBSITE/refs/heads/main/website_view.png/"/> </a>
+<br/>
 
 ---
 
