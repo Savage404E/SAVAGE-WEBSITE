@@ -8,20 +8,10 @@ live website : https://savage404e.github.io/SAVAGE-WEBSITE/
 
 - **Gaming Theme**: Clean, modern dark theme with purple accents
 - **Responsive Design**: Works on all devices
-- **Hero Section**: Eye-catching introduction with animated gradient text
-- **Features Showcase**: Highlights pet system, dungeons, economy, and 20+ mini-games
-- **Game Pictures**: Visual showcase of Card RNG, Clan Teams, Dungeon Fights, and Pet Lovers
-- **Server Stats**: Displays 400+ bot users and 17K+ server members
+- **Game Pictures**: Visual showcase of RNG Cards, Clan, Dungeon, Pet & Zoo Animal Collections
+- **Server Stats**: Displays 500+ Users and 25K+ server members
 - **Call-to-Action**: Join server buttons and links
-- **Background GIFs**: Animated backgrounds for hero, features, and CTA sections
-
-## Tech Stack
-
-- **React 18**: UI framework
-- **Vite**: Build tool and dev server
-- **Inline Styles**: CSS styling for reliability
-- **Emojis**: Icon replacements for better compatibility
-- **GitHub Actions**: Automated deployment
+- **Background GIFs**: Animated backgrounds for hero & features
 
 ## Project Structure
 
