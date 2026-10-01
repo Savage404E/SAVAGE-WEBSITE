@@ -4,9 +4,11 @@ A modern, gaming-themed website for the SAVAGE Discord Bot built with React and 
 live website : https://savage404e.github.io/SAVAGE-WEBSITE/
 
 ---
+
 <div align="center">
-<a img src="https://raw.githubusercontent.com/Savage404E/SAVAGE-WEBSITE/refs/heads/main/website_view.png/"/> </a>
+<img src="https://raw.githubusercontent.com/Savage404E/SAVAGE-WEBSITE/refs/heads/main/website_view.png/"/>
 </div>
+
 ---
 
 ## Features
