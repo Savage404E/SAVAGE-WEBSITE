@@ -1,10 +1,16 @@
 import { useState, useEffect } from 'react';
 
 const assetUrl = (fileName) => `${import.meta.env.BASE_URL}${fileName}`;
+const MIN_ECONOMY_TOTAL = 85_000_000;
+const MAX_ECONOMY_TOTAL = 150_000_000;
+const MIN_ACTIVE_USERS = 1_780;
+const MAX_ACTIVE_USERS = 1_830;
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
   const [isSmallMobile, setIsSmallMobile] = useState(false);
+  const [economyTotal, setEconomyTotal] = useState(93_651_162);
+  const [activeUsers, setActiveUsers] = useState(1_813);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -15,6 +21,45 @@ function App() {
     checkMobile();
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  useEffect(() => {
+    const intervalId = window.setInterval(() => {
+      setEconomyTotal((currentTotal) => {
+        const change = Math.floor(Math.random() * 29_501) + 500;
+        const nextTotal = currentTotal + (Math.random() < 0.5 ? -change : change);
+
+        if (nextTotal < MIN_ECONOMY_TOTAL) return currentTotal + change;
+        if (nextTotal > MAX_ECONOMY_TOTAL) return currentTotal - change;
+        return nextTotal;
+      });
+    }, 3000);
+
+    return () => window.clearInterval(intervalId);
+  }, []);
+
+  useEffect(() => {
+    let timeoutId;
+    const updateActiveUsers = () => {
+      setActiveUsers((currentUsers) => {
+        const direction = currentUsers <= MIN_ACTIVE_USERS
+          ? 1
+          : currentUsers >= MAX_ACTIVE_USERS
+            ? -1
+            : Math.random() < 0.5 ? -1 : 1;
+        const change = Math.min(
+          Math.floor(Math.random() * 5) + 1,
+          direction > 0 ? MAX_ACTIVE_USERS - currentUsers : currentUsers - MIN_ACTIVE_USERS,
+        );
+        return currentUsers + direction * change;
+      });
+
+      const delay = Math.floor(Math.random() * 10_001) + 5_000;
+      timeoutId = window.setTimeout(updateActiveUsers, delay);
+    };
+
+    timeoutId = window.setTimeout(updateActiveUsers, Math.floor(Math.random() * 10_001) + 5_000);
+    return () => window.clearTimeout(timeoutId);
   }, []);
 
   const styles = {
@@ -157,7 +202,7 @@ function App() {
     },
     stats: {
       display: 'grid',
-      gridTemplateColumns: isSmallMobile ? '1fr' : isMobile ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)',
+      gridTemplateColumns: isSmallMobile ? '1fr' : isMobile ? 'repeat(2, 1fr)' : 'repeat(5, 1fr)',
       gap: isSmallMobile ? '8px' : isMobile ? '12px' : '24px',
       maxWidth: '1280px',
       margin: '0 auto',
@@ -218,7 +263,10 @@ function App() {
     },
     gamePictures: {
       padding: isMobile ? '32px 12px' : '80px 24px',
-      backgroundColor: 'rgba(10, 10, 15, 0.3)',
+      backgroundImage: `linear-gradient(rgba(10, 10, 15, 0.45), rgba(10, 10, 15, 0.45)), url(${assetUrl('wall-bg2.png')})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
     },
     gamePicturesContent: {
       maxWidth: '1280px',
@@ -385,35 +433,29 @@ function App() {
 
   const features = [
     { icon: "🎮", title: "Pet System", description: "Adopt and care for pets. Feed, clean, and play with them to level up." },
-    { icon: "⚔️", title: "Dungeon System", description: "Explore dungeons with friends, battle monsters, and earn epic loot." },
-    { icon: "⚡", title: "Economy", description: "Complete tasks, play games, and earn cash. Shop for items and upgrades." },
+    { icon: "⚔️", title: "Dungeon Story Mode", description: "Explore dungeons with friends, battle monsters, and earn epic loot." },
+    { icon: "⚡", title: "Economy", description: "Use $cash, $bank, $lottery, $quest, $work, $clan, and $stock, plus economy games, to manage and grow your in-game wealth." },
     { icon: "🎲", title: "RNG Games", description: "Test your luck with random number generation games and win big." },
-    { icon: "🎯", title: "Battle Royale", description: "Compete in intense battles and be the last one standing." },
-    { icon: "🚢", title: "Ship Battle", description: "Command your ship and engage in epic naval battles." },
-    { icon: "🏆", title: "Badges", description: "Collect and display badges for your achievements." },
+    { icon: "🏆", title: "Badges & Roles", description: "Collect and display badges for your achievements. Buy server roles using the $role command to show yourself off at the top." },
     { icon: "🤝", title: "Actions", description: "Fun social commands to interact with other users." },
-    { icon: "🔢", title: "2048", description: "Classic puzzle game. Merge tiles to reach 2048." },
     { icon: "⚖️", title: "Split or Steal", description: "Trust game. Split the pot or steal it all." },
     { icon: "✂️", title: "Rock Paper Scissors", description: "Classic game of chance. Beat your opponent." },
-    { icon: "🪙", title: "Coinflip", description: "Flip a coin and test your luck. Win or lose." },
-    { icon: "🎰", title: "Slot Machine", description: "Spin the slots and match symbols for big wins." },
-    { icon: "💣", title: "Mine", description: "Navigate the minefield. Avoid bombs and find treasure." },
     { icon: "🏰", title: "Clan System", description: "Join or create clans. Build your community together." },
     { icon: "🏛️", title: "Bank", description: "Store your cash safely and earn interest over time." },
     { icon: "🎟️", title: "Lottery", description: "Buy tickets for a chance to win the jackpot." },
-    { icon: "🛒", title: "Shop", description: "Buy items, upgrades, and special items with your cash." },
-    { icon: "🎡", title: "Roulette", description: "Spin the wheel and place your bets. Win big rewards." },
-    { icon: "🎯", title: "Plinko", description: "Drop the ball and watch it bounce. Win based on where it lands." },
+    { icon: "🛒", title: "Shop", description: "Buy items, upgrades, profile decorations, and special items with your cash." },
     { icon: "🎣", title: "Fishing", description: "Relax and fish at different locations. Catch rare fish and sell them." },
     { icon: "👑", title: "Leaderboards", description: "Compete with others for top rankings and earn exclusive rewards." },
-    { icon: "📈", title: "Daily Rewards", description: "Claim daily bonuses and participate in events for extra rewards." },
+    { icon: "📈", title: "Daily Rewards", description: "Claim $Daily bonuses and participate in $Quest for extra rewards." },
   ];
 
   const gamePictures = [
     { image: assetUrl('card-rng.png'), title: "Card RNG", description: "Test your luck with our card-based RNG games. Draw cards, play hands, and win big rewards with strategic gameplay and random outcomes." },
-    { image: assetUrl('clan.png'), title: "Clan Teams", description: "Join or create powerful clans with your friends. Build your community, compete in clan wars, and earn exclusive rewards together." },
-    { image: assetUrl('dungeon.png'), title: "Dungeon Fights", description: "Explore dangerous dungeons with your party. Battle monsters, find treasure, and conquer challenging boss fights for epic loot." },
-    { image: assetUrl('pets.png'), title: "Pet Lovers", description: "Adopt and care for adorable pets. Feed them, play with them, and watch them grow. Level up your pets for special bonuses." },
+    { image: assetUrl('clan_cmd.png'), title: "Clan Teams", description: "Join or create powerful clans with your friends. Build your community, compete in clan wars, and earn exclusive rewards together." },
+    { image: assetUrl('dungeon_cmd.png'), title: "Dungeon Fights", description: "Explore dangerous dungeons with your party. Battle monsters, find treasure, and conquer challenging boss fights for epic loot." },
+    { image: assetUrl('pet_cmd.png'), title: "Pet Lovers", description: "Adopt and care for adorable pets. Feed them, play with them, and watch them grow. Level up your pets for special bonuses." },
+    { image: assetUrl('game1.png'), title: "Cash Flip & Slots", description: "Put your game cash on the line with Cash Flip or spin the slots. Play casino-style mini-games right in Discord." },
+    { image: assetUrl('game2.png'), title: "Roulette", description: "Place your bet on red, black, or a number and see where the roulette wheel lands. Play for fun using SAVAGE in-game currency." },
   ];
 
   return (
@@ -446,15 +488,15 @@ function App() {
           </p>
           
           <div style={styles.ctaContainer}>
-            <a href="https://discord.gg/besavage" target="_blank" rel="noopener noreferrer" style={{...styles.button, ...styles.ctaButton}}>
+            <a href="https://discord.com/oauth2/authorize?client_id=1460608745502675027" target="_blank" rel="noopener noreferrer" style={{...styles.button, ...styles.ctaButton}}>
               <span>🔗</span>
               Add to Server
             </a>
-            <a href="#features" style={{...styles.secondaryButton, ...styles.ctaButton}}>
+            <a href="#game-pictures" style={{...styles.secondaryButton, ...styles.ctaButton}}>
               Explore Features
             </a>
-            <a href="#game-pictures" style={{...styles.secondaryButton, ...styles.ctaButton}}>
-              📸 Game Pictures
+            <a href="rules.html" style={{...styles.secondaryButton, ...styles.ctaButton}}>
+              📜Game Rules
             </a>
           </div>
           
@@ -464,23 +506,33 @@ function App() {
           <div style={styles.stats}>
             <div style={styles.statCard}>
               <div style={{ fontSize: '32px', margin: '0 auto 12px' }}>👥</div>
-              <div style={styles.statNumber}>400+</div>
-              <div style={styles.statLabel}>Bot Users</div>
+              <div style={styles.statNumber}>{activeUsers.toLocaleString('en-US')}+</div>
+              <div style={styles.statLabel}>Active Users</div>
             </div>
             <div style={styles.statCard}>
               <div style={{ fontSize: '32px', margin: '0 auto 12px' }}>👑</div>
-              <div style={styles.statNumber}>21K+</div>
+              <div style={styles.statNumber}>23K+</div>
               <div style={styles.statLabel}>Server Members</div>
             </div>
             <div style={styles.statCard}>
               <div style={{ fontSize: '32px', margin: '0 auto 12px' }}>⚔️</div>
-              <div style={styles.statNumber}>20+</div>
+              <div style={styles.statNumber}>60+</div>
               <div style={styles.statLabel}>Mini Games</div>
             </div>
             <div style={styles.statCard}>
               <div style={{ fontSize: '32px', margin: '0 auto 12px' }}>📈</div>
-              <div style={styles.statNumber}>24/7</div>
-              <div style={styles.statLabel}>Uptime</div>
+              <div style={styles.statNumber}>30,301</div>
+              <div style={styles.statLabel}>Total Users</div>
+            </div>
+            <div style={styles.statCard}>
+              <img
+                src={assetUrl('savage_cash.png')}
+                alt=""
+                aria-hidden="true"
+                style={{ display: 'block', width: '32px', height: '32px', objectFit: 'contain', margin: '0 auto 12px' }}
+              />
+              <div style={styles.statNumber}>{economyTotal.toLocaleString('en-US')}</div>
+              <div style={styles.statLabel}>Game Economy</div>
             </div>
           </div>
         </div>
@@ -545,7 +597,7 @@ function App() {
               Join the ultimate gaming experience
             </p>
             <p style={styles.ctaDescription}>
-              Join our massive and famous community of 21k+ members! SAVAGE Bot is the most popular gaming bot with pets, dungeons, economy, and 20+ mini-games. Be part of something legendary.
+              Join our massive and famous community of 23k+ members! SAVAGE Bot is the most popular gaming bot with pets, dungeons, economy, and 20+ mini-games. Be part of something legendary.
             </p>
             <div style={styles.ctaStats}>
               <div style={styles.ctaStat}>
@@ -553,7 +605,7 @@ function App() {
                 <div style={styles.ctaStatLabel}>Badge</div>
               </div>
               <div style={styles.ctaStat}>
-                <div style={styles.ctaStatNumber}>👥 21k+</div>
+                <div style={styles.ctaStatNumber}>👥 23k+</div>
                 <div style={styles.ctaStatLabel}>Members</div>
               </div>
               <div style={styles.ctaStat}>
