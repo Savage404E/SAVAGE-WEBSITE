@@ -5,19 +5,12 @@ live website : https://savage404e.github.io/SAVAGE-WEBSITE/
 
 ![Website preview](https://raw.githubusercontent.com/Savage404E/SAVAGE-WEBSITE/refs/heads/main/website_view.png)
 
-## Features
-- **Gaming Theme**: Clean, modern dark theme with purple accents
-- **Responsive Design**: Works on all devices
-- **Game Pictures**: Visual showcase of RNG Cards, Clan, Dungeon, Pet & Zoo Animal Collections
-- **Server Stats**: Displays 500+ Users and 25K+ server members
-- **Call-to-Action**: Join server buttons and links
-- **Background GIFs**: Animated backgrounds for hero & features
-
 ## Project Structure
 
 ```
 website of savage/
 ├── index.html
+├── rules.html
 ├── package.json
 ├── vite.config.js
 ├── postcss.config.js
@@ -29,15 +22,24 @@ website of savage/
 │   ├── wall-bg.gif
 │   ├── door-bg.gif
 │   ├── card-rng.png
-│   ├── clan.png
-│   ├── dungeon.png
-│   └── pets.png
+│   ├── clan_cmd.png
+│   ├── dungeon_cmd.png
+│   ├── pet_cmd.png
+│   ├── game1.png
+│   └── game2.png
 └── src/
     ├── main.jsx
+    ├── rules.jsx
     ├── App.jsx
+    ├── RulesPage.jsx
+    ├── rules.css
     └── index.css
 ```
 
 ## License
 
 © 2024 SAVAGE Discord Bot. All rights reserved.
+
+```
+
+BeSavage
